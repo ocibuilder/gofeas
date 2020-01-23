@@ -1,4 +1,4 @@
-module github.com/artbegolli/grafeas
+module github.com/ocibuilder/gofeas
 
 go 1.13
 
