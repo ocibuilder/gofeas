@@ -2,7 +2,7 @@
 *.o
 *.a
 *.so
-
+*.iml
 # Folders
 _obj
 _test
