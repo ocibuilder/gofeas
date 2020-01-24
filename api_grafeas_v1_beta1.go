@@ -13,6 +13,7 @@
 package gofeas
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -194,7 +195,11 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 			body:  localVarBody,
 			error: localVarHttpResponse.Status,
 		}
+		// Custom code to re-set http response
+		localVarHttpResponse.Body = ioutil.NopCloser(bytes.NewReader(localVarBody))
+		localVarHttpResponse.Close = false
 
+		// Who wrote this generator...?
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1BatchCreateOccurrencesResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
