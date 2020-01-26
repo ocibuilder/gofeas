@@ -26,3 +26,5 @@ _testmain.go
 swagger-codegen-cli.jar
 grafeas.swagger.json
 grafeas.swagger.json.*
+
+vendor

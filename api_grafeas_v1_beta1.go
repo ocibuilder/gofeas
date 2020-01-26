@@ -29,17 +29,15 @@ var (
 	_ context.Context
 )
 
-type GrafeasV1Beta1ApiService service
-
 /*
-GrafeasV1Beta1ApiService Creates new notes in batch.
+Client Creates new notes in batch.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project in the form of &#x60;projects/[PROJECT_ID]&#x60;, under which the notes are to be created.
  * @param body
 
 @return V1beta1BatchCreateNotesResponse
 */
-func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent string, body V1beta1BatchCreateNotesRequest) (V1beta1BatchCreateNotesResponse, *http.Response, error) {
+func (a *Client) BatchCreateNotes(ctx context.Context, parent string, body V1beta1BatchCreateNotesRequest) (V1beta1BatchCreateNotesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -49,7 +47,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/notes:batchCreate"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/notes:batchCreate"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -75,12 +73,12 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent 
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -93,7 +91,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -107,7 +105,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent 
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1BatchCreateNotesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -123,14 +121,14 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateNotes(ctx context.Context, parent 
 }
 
 /*
-GrafeasV1Beta1ApiService Creates new occurrences in batch.
+Client Creates new occurrences in batch.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project in the form of &#x60;projects/[PROJECT_ID]&#x60;, under which the occurrences are to be created.
  * @param body
 
 @return V1beta1BatchCreateOccurrencesResponse
 */
-func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, parent string, body V1beta1BatchCreateOccurrencesRequest) (V1beta1BatchCreateOccurrencesResponse, *http.Response, error) {
+func (a *Client) BatchCreateOccurrences(ctx context.Context, parent string, body V1beta1BatchCreateOccurrencesRequest) (V1beta1BatchCreateOccurrencesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -140,7 +138,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/occurrences:batchCreate"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/occurrences:batchCreate"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -166,12 +164,12 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -184,7 +182,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -202,7 +200,7 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 		// Who wrote this generator...?
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1BatchCreateOccurrencesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -218,14 +216,14 @@ func (a *GrafeasV1Beta1ApiService) BatchCreateOccurrences(ctx context.Context, p
 }
 
 /*
-GrafeasV1Beta1ApiService Creates a new note.
+Client Creates a new note.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project in the form of &#x60;projects/[PROJECT_ID]&#x60;, under which the note is to be created.
  * @param body The note to create.
 
 @return V1beta1Note
 */
-func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string, body V1beta1Note) (V1beta1Note, *http.Response, error) {
+func (a *Client) CreateNote(ctx context.Context, parent string, body V1beta1Note) (V1beta1Note, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -235,7 +233,7 @@ func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/notes"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/notes"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -261,12 +259,12 @@ func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -279,7 +277,7 @@ func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -293,7 +291,7 @@ func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Note
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -309,14 +307,14 @@ func (a *GrafeasV1Beta1ApiService) CreateNote(ctx context.Context, parent string
 }
 
 /*
-GrafeasV1Beta1ApiService Creates a new occurrence.
+Client Creates a new occurrence.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project in the form of &#x60;projects/[PROJECT_ID]&#x60;, under which the occurrence is to be created.
  * @param body The occurrence to create.
 
 @return V1beta1Occurrence
 */
-func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent string, body V1beta1Occurrence) (V1beta1Occurrence, *http.Response, error) {
+func (a *Client) CreateOccurrence(ctx context.Context, parent string, body V1beta1Occurrence) (V1beta1Occurrence, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Post")
 		localVarPostBody    interface{}
@@ -326,7 +324,7 @@ func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/occurrences"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/occurrences"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -352,12 +350,12 @@ func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent 
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -370,7 +368,7 @@ func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -384,7 +382,7 @@ func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent 
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Occurrence
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -400,13 +398,13 @@ func (a *GrafeasV1Beta1ApiService) CreateOccurrence(ctx context.Context, parent 
 }
 
 /*
-GrafeasV1Beta1ApiService Deletes the specified note.
+Client Deletes the specified note.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the note in the form of &#x60;projects/[PROVIDER_ID]/notes/[NOTE_ID]&#x60;.
 
 @return interface{}
 */
-func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) (interface{}, *http.Response, error) {
+func (a *Client) DeleteNote(ctx context.Context, name string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -416,7 +414,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/notes/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/notes/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/notes/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -440,12 +438,12 @@ func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -458,7 +456,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -472,7 +470,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) 
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v interface{}
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -488,13 +486,13 @@ func (a *GrafeasV1Beta1ApiService) DeleteNote(ctx context.Context, name string) 
 }
 
 /*
-GrafeasV1Beta1ApiService Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.
+Client Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the occurrence in the form of &#x60;projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]&#x60;.
 
 @return interface{}
 */
-func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name string) (interface{}, *http.Response, error) {
+func (a *Client) DeleteOccurrence(ctx context.Context, name string) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Delete")
 		localVarPostBody    interface{}
@@ -504,7 +502,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/occurrences/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -528,12 +526,12 @@ func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -546,7 +544,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name st
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -560,7 +558,7 @@ func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name st
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v interface{}
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -576,13 +574,13 @@ func (a *GrafeasV1Beta1ApiService) DeleteOccurrence(ctx context.Context, name st
 }
 
 /*
-GrafeasV1Beta1ApiService Gets the specified note.
+Client Gets the specified note.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the note in the form of &#x60;projects/[PROVIDER_ID]/notes/[NOTE_ID]&#x60;.
 
 @return V1beta1Note
 */
-func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1beta1Note, *http.Response, error) {
+func (a *Client) GetNote(ctx context.Context, name string) (V1beta1Note, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -592,7 +590,7 @@ func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/notes/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/notes/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/notes/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -616,12 +614,12 @@ func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -634,7 +632,7 @@ func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -648,7 +646,7 @@ func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Note
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -664,13 +662,13 @@ func (a *GrafeasV1Beta1ApiService) GetNote(ctx context.Context, name string) (V1
 }
 
 /*
-GrafeasV1Beta1ApiService Gets the specified occurrence.
+Client Gets the specified occurrence.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the occurrence in the form of &#x60;projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]&#x60;.
 
 @return V1beta1Occurrence
 */
-func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name string) (V1beta1Occurrence, *http.Response, error) {
+func (a *Client) GetOccurrence(ctx context.Context, name string) (V1beta1Occurrence, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -680,7 +678,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name strin
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/occurrences/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -704,12 +702,12 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -722,7 +720,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name strin
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -736,7 +734,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name strin
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Occurrence
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -752,13 +750,13 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrence(ctx context.Context, name strin
 }
 
 /*
-GrafeasV1Beta1ApiService Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
+Client Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the occurrence in the form of &#x60;projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]&#x60;.
 
 @return V1beta1Note
 */
-func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name string) (V1beta1Note, *http.Response, error) {
+func (a *Client) GetOccurrenceNote(ctx context.Context, name string) (V1beta1Note, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -768,7 +766,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/occurrences/*}/notes"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/occurrences/*}/notes"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/occurrences/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -792,12 +790,12 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -810,7 +808,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name s
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -824,7 +822,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name s
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Note
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -840,7 +838,7 @@ func (a *GrafeasV1Beta1ApiService) GetOccurrenceNote(ctx context.Context, name s
 }
 
 /*
-GrafeasV1Beta1ApiService Gets a summary of the number and severity of occurrences.
+Client Gets a summary of the number and severity of occurrences.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project to get a vulnerability summary for in the form of &#x60;projects/[PROJECT_ID]&#x60;.
  * @param optional nil or *GetVulnerabilityOccurrencesSummaryOpts - Optional Parameters:
@@ -853,7 +851,7 @@ type GetVulnerabilityOccurrencesSummaryOpts struct {
 	Filter optional.String
 }
 
-func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx context.Context, parent string, localVarOptionals *GetVulnerabilityOccurrencesSummaryOpts) (V1beta1VulnerabilityOccurrencesSummary, *http.Response, error) {
+func (a *Client) GetVulnerabilityOccurrencesSummary(ctx context.Context, parent string, localVarOptionals *GetVulnerabilityOccurrencesSummaryOpts) (V1beta1VulnerabilityOccurrencesSummary, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -863,7 +861,7 @@ func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx contex
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/occurrences:vulnerabilitySummary"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/occurrences:vulnerabilitySummary"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -890,12 +888,12 @@ func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx contex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -908,7 +906,7 @@ func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx contex
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -922,7 +920,7 @@ func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx contex
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1VulnerabilityOccurrencesSummary
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -938,7 +936,7 @@ func (a *GrafeasV1Beta1ApiService) GetVulnerabilityOccurrencesSummary(ctx contex
 }
 
 /*
-GrafeasV1Beta1ApiService Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.
+Client Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the note to list occurrences for in the form of &#x60;projects/[PROVIDER_ID]/notes/[NOTE_ID]&#x60;.
  * @param optional nil or *ListNoteOccurrencesOpts - Optional Parameters:
@@ -955,7 +953,7 @@ type ListNoteOccurrencesOpts struct {
 	PageToken optional.String
 }
 
-func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name string, localVarOptionals *ListNoteOccurrencesOpts) (V1beta1ListNoteOccurrencesResponse, *http.Response, error) {
+func (a *Client) ListNoteOccurrences(ctx context.Context, name string, localVarOptionals *ListNoteOccurrencesOpts) (V1beta1ListNoteOccurrencesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -965,7 +963,7 @@ func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/notes/*}/occurrences"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/notes/*}/occurrences"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/notes/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -998,12 +996,12 @@ func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1016,7 +1014,7 @@ func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1030,7 +1028,7 @@ func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1ListNoteOccurrencesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1046,7 +1044,7 @@ func (a *GrafeasV1Beta1ApiService) ListNoteOccurrences(ctx context.Context, name
 }
 
 /*
-GrafeasV1Beta1ApiService Lists notes for the specified project.
+Client Lists notes for the specified project.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project to list notes for in the form of &#x60;projects/[PROJECT_ID]&#x60;.
  * @param optional nil or *ListNotesOpts - Optional Parameters:
@@ -1063,7 +1061,7 @@ type ListNotesOpts struct {
 	PageToken optional.String
 }
 
-func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string, localVarOptionals *ListNotesOpts) (V1beta1ListNotesResponse, *http.Response, error) {
+func (a *Client) ListNotes(ctx context.Context, parent string, localVarOptionals *ListNotesOpts) (V1beta1ListNotesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1073,7 +1071,7 @@ func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string,
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/notes"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/notes"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1106,12 +1104,12 @@ func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string,
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1124,7 +1122,7 @@ func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string,
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1138,7 +1136,7 @@ func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string,
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1ListNotesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1154,7 +1152,7 @@ func (a *GrafeasV1Beta1ApiService) ListNotes(ctx context.Context, parent string,
 }
 
 /*
-GrafeasV1Beta1ApiService Lists occurrences for the specified project.
+Client Lists occurrences for the specified project.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param parent The name of the project to list occurrences for in the form of &#x60;projects/[PROJECT_ID]&#x60;.
  * @param optional nil or *ListOccurrencesOpts - Optional Parameters:
@@ -1171,7 +1169,7 @@ type ListOccurrencesOpts struct {
 	PageToken optional.String
 }
 
-func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent string, localVarOptionals *ListOccurrencesOpts) (V1beta1ListOccurrencesResponse, *http.Response, error) {
+func (a *Client) ListOccurrences(ctx context.Context, parent string, localVarOptionals *ListOccurrencesOpts) (V1beta1ListOccurrencesResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -1181,7 +1179,7 @@ func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent s
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{parent=projects/*}/occurrences"
+	localVarPath := a.BasePath + "/v1beta1/{parent=projects/*}/occurrences"
 	localVarPath = strings.Replace(localVarPath, "{parent=projects/*}", fmt.Sprintf("%v", parent), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1214,12 +1212,12 @@ func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent s
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1232,7 +1230,7 @@ func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent s
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1246,7 +1244,7 @@ func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent s
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1ListOccurrencesResponse
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1262,14 +1260,14 @@ func (a *GrafeasV1Beta1ApiService) ListOccurrences(ctx context.Context, parent s
 }
 
 /*
-GrafeasV1Beta1ApiService Updates the specified note.
+Client Updates the specified note.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the note in the form of &#x60;projects/[PROVIDER_ID]/notes/[NOTE_ID]&#x60;.
  * @param body The updated note.
 
 @return V1beta1Note
 */
-func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, body V1beta1Note) (V1beta1Note, *http.Response, error) {
+func (a *Client) UpdateNote(ctx context.Context, name string, body V1beta1Note) (V1beta1Note, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1279,7 +1277,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, 
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/notes/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/notes/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/notes/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1305,12 +1303,12 @@ func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, 
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1323,7 +1321,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, 
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1337,7 +1335,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, 
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Note
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
@@ -1353,14 +1351,14 @@ func (a *GrafeasV1Beta1ApiService) UpdateNote(ctx context.Context, name string, 
 }
 
 /*
-GrafeasV1Beta1ApiService Updates the specified occurrence.
+Client Updates the specified occurrence.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name The name of the occurrence in the form of &#x60;projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]&#x60;.
  * @param body The updated occurrence.
 
 @return V1beta1Occurrence
 */
-func (a *GrafeasV1Beta1ApiService) UpdateOccurrence(ctx context.Context, name string, body V1beta1Occurrence) (V1beta1Occurrence, *http.Response, error) {
+func (a *Client) UpdateOccurrence(ctx context.Context, name string, body V1beta1Occurrence) (V1beta1Occurrence, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Patch")
 		localVarPostBody    interface{}
@@ -1370,7 +1368,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateOccurrence(ctx context.Context, name st
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
+	localVarPath := a.BasePath + "/v1beta1/{name=projects/*/occurrences/*}"
 	localVarPath = strings.Replace(localVarPath, "{name=projects/*/occurrences/*}", fmt.Sprintf("%v", name), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1396,12 +1394,12 @@ func (a *GrafeasV1Beta1ApiService) UpdateOccurrence(ctx context.Context, name st
 	}
 	// body params
 	localVarPostBody = &body
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	r, err := a.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHttpResponse, err := a.client.callAPI(r)
+	localVarHttpResponse, err := a.callAPI(r)
 	if err != nil || localVarHttpResponse == nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1414,7 +1412,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateOccurrence(ctx context.Context, name st
 
 	if localVarHttpResponse.StatusCode < 300 {
 		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+		err = a.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 		if err == nil {
 			return localVarReturnValue, localVarHttpResponse, err
 		}
@@ -1428,7 +1426,7 @@ func (a *GrafeasV1Beta1ApiService) UpdateOccurrence(ctx context.Context, name st
 
 		if localVarHttpResponse.StatusCode == 200 {
 			var v V1beta1Occurrence
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			err = a.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHttpResponse, newErr
