@@ -39,32 +39,20 @@ var (
 
 // APIClient manages communication with the proto/v1beta1/grafeas.proto API vversion not set
 // In most cases there should be only one, shared, APIClient.
-type APIClient struct {
-	cfg    *Configuration
-	common service // Reuse a single struct instead of allocating one for each service on the heap.
-
-	// API Services
-
-	GrafeasV1Beta1Api *GrafeasV1Beta1ApiService
-}
-
-type service struct {
-	client *APIClient
+type Client struct {
+	*Configuration
 }
 
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
+func NewAPIClient(cfg *Configuration) *Client {
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
 
-	c := &APIClient{}
-	c.cfg = cfg
-	c.common.client = c
-
-	// API Services
-	c.GrafeasV1Beta1Api = (*GrafeasV1Beta1ApiService)(&c.common)
+	c := &Client{
+		Configuration: cfg,
+	}
 
 	return c
 }
@@ -144,17 +132,17 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 }
 
 // callAPI do the request.
-func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
-	return c.cfg.HTTPClient.Do(request)
+func (c *Client) callAPI(request *http.Request) (*http.Response, error) {
+	return c.HTTPClient.Do(request)
 }
 
 // Change base path to allow switching to mocks
-func (c *APIClient) ChangeBasePath(path string) {
-	c.cfg.BasePath = path
+func (c *Client) ChangeBasePath(path string) {
+	c.BasePath = path
 }
 
 // prepareRequest build the request
-func (c *APIClient) prepareRequest(
+func (c *Client) prepareRequest(
 	ctx context.Context,
 	path string, method string,
 	postBody interface{},
@@ -257,12 +245,12 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Override request host, if applicable
-	if c.cfg.Host != "" {
-		localVarRequest.Host = c.cfg.Host
+	if c.Host != "" {
+		localVarRequest.Host = c.Host
 	}
 
 	// Add the user agent to the request.
-	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
+	localVarRequest.Header.Add("User-Agent", c.UserAgent)
 
 	if ctx != nil {
 		// add context to the request
@@ -292,14 +280,14 @@ func (c *APIClient) prepareRequest(
 		}
 	}
 
-	for header, value := range c.cfg.DefaultHeader {
+	for header, value := range c.DefaultHeader {
 		localVarRequest.Header.Add(header, value)
 	}
 
 	return localVarRequest, nil
 }
 
-func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err error) {
+func (c *Client) decode(v interface{}, b []byte, contentType string) (err error) {
 	if strings.Contains(contentType, "application/xml") {
 		if err = xml.Unmarshal(b, v); err != nil {
 			return err
